@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=90
 #SBATCH --mem=500G
 #SBATCH --partition=bigmem
-#SBATCH --output=logs/STAR_primarycilia_1_log.out
+#SBATCH --output=logs/STAR_primarycilia_v1_log.out
 #SBATCH --nodelist=node17
 
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
