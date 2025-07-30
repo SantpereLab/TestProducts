@@ -31,7 +31,7 @@ mkdir -p "$output_dir"
 
 start_time=$(date +%s)
 
-# Function to process FASTQ files
+# Function to process BAM files
 read_count() {
     local FILE="$1"
 
