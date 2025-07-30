@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=90
 #SBATCH --mem=500G
 #SBATCH --partition=bigmem
-#SBATCH --output=/users/genomics/jmartinez/featureCounts_primarycilia_2_log.out
+#SBATCH --output=logs/featureCounts_v1_log.out
 #SBATCH --nodelist=node17
 
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
