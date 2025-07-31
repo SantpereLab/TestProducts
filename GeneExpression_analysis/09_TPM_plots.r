@@ -118,6 +118,6 @@ p <- ggplot(tpm_plot_data, aes(x = condition, y = log2_TPM, fill = condition)) +
     strip.text = element_text(face = "bold")
   )
 
-pdf(paste0(root_dir, "/07_plots/tpms_shared_genes_p8_p15_prova.pdf"), width = 20, height = 6)
+pdf(paste0(root_dir, "/07_plots/tpms_shared_genes_p8_p15.pdf"), width = 20, height = 6)
 print(p)
 dev.off()
