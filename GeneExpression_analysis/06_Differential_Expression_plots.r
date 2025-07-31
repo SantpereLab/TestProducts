@@ -15,9 +15,8 @@ library(colorspace)
 library(RColorBrewer)
 library(scales)
 
-
 #-------------------------------------------------------------------------
-#--------------- Volcano of Differentially expressed genes ---------------
+#--------------- Volcano of Differentially Expressed Genes ---------------
 #-------------------------------------------------------------------------
 
 # Set root directory
@@ -89,9 +88,9 @@ pdf(paste0(root_dir, "/07_plots/volcano_p15_vs_p8.pdf"), height = 12, width = 8)
 print(create_volcano_plot_enhanced(res_p8_vs_p15, "Differential Gene Expression: p8 vs p15"))
 dev.off()
 
-#-----------------------------------------------------------------------
+#------------------------------------------------------------------------
 #--------------- Volcano Segregating by Ciliary Function  ---------------
-#-----------------------------------------------------------------------
+#------------------------------------------------------------------------
 
 # Load functional categories
 gene_info <- read_tsv(paste0(root_dir, "/99_general/Reiter2017_BigCategories.txt"))

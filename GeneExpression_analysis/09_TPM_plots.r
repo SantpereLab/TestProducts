@@ -17,7 +17,7 @@ library(RColorBrewer)
 # ----------------------------------------
 
 # Set root directory
-root_dir <- "/users/genomics/jmartinez/a_primary_cilia_project"
+root_dir <- "/path/to/the/project"
 
 # Load the annotated TPM data
 tpm_path <- paste0(root_dir, "/06_fc/tpm_annotated.csv")
