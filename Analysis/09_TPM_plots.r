@@ -11,6 +11,7 @@ library(data.table)
 library(tidyr)
 library(ggh4x)
 library(RColorBrewer)
+library(Cairo)
 
 # ----------------------------------------
 # ------------ Violin Plots --------------
@@ -44,12 +45,11 @@ genes_of_interest_ensembl <- "ENSG00000294512"
 tpm_long <- tpm_long %>%
   filter(SYMBOL %in% genes_of_interest_symbol | geneid %in% genes_of_interest_ensembl)
 
-
-# Define the order of your categories and the genes within them
+# Define the order of categories and the genes within them
 category_order <- c(
-  "Upregulated in p8 and p15",
-  "Downregulated in p8 and p15",
-  "Inverse effect in p8 and p15"
+  "Upregulated in Grosheimin\nand α−Cyclocostunolide",
+  "Downregulated in Grosheimin\nand α−Cyclocostunolide",
+  "Inverse effect in Grosheimin\nand α−Cyclocostunolide"
 )
 
 gene_order <- c(
@@ -69,10 +69,10 @@ tpm_plot_data <- tpm_long %>%
   
   # Assign each gene to its category
   mutate(category = case_when(
-    facet_label %in% c("NQO1", "ADGRG1") ~ "Upregulated in p8 and p15",
-    facet_label %in% c("IL32", "IGFBP5", "RPL13AP25", "SBF2-AS1", "FST", "ENSG00000294512") ~ "Downregulated in p8 and p15",
-    facet_label %in% c("PLK1", "CDCA3", "AURKA", "KIF20A") ~ "Inverse effect in p8 and p15",
-    TRUE ~ "Other" # A fallback for any genes not in your lists
+    facet_label %in% c("NQO1", "ADGRG1") ~ "Upregulated in Grosheimin\nand α−Cyclocostunolide",
+    facet_label %in% c("IL32", "IGFBP5", "RPL13AP25", "SBF2-AS1", "FST", "ENSG00000294512") ~ "Downregulated in Grosheimin\nand α−Cyclocostunolide",
+    facet_label %in% c("PLK1", "CDCA3", "AURKA", "KIF20A") ~ "Inverse effect in Grosheimin\nand α−Cyclocostunolide",
+    TRUE ~ "Other" # A fallback for any genes not in the lists
   )) %>%
   
   # Apply the desired ordering by converting to factors
@@ -81,6 +81,10 @@ tpm_plot_data <- tpm_long %>%
     facet_label = factor(facet_label, levels = gene_order),
     condition = factor(condition, levels = c("DMSO", "p8", "p15"))
   )
+
+# Set labels for conditions
+legend_labels <- c("DMSO" = "Control", "p8" = "Grosheimin", "p15" = "α-Cyclocostunolide")
+xaxis_labels <- c("DMSO" = "Ctrl", "p8" = "G", "p15" = "α-C")
 
 # Plot
 p <- ggplot(tpm_plot_data, aes(x = condition, y = log2_TPM, fill = condition)) +
@@ -94,7 +98,10 @@ p <- ggplot(tpm_plot_data, aes(x = condition, y = log2_TPM, fill = condition)) +
   ggh4x::facet_nested(~ category + facet_label, scales = "free_y") +
   
   # Color palette
-  scale_fill_brewer(palette = "Set2") +
+  scale_fill_brewer(palette = "Set2", labels = legend_labels) +
+
+  # Rename x-axis labels
+  scale_x_discrete(labels = xaxis_labels) +
   
   # Labels and Titles
   labs(
@@ -118,6 +125,7 @@ p <- ggplot(tpm_plot_data, aes(x = condition, y = log2_TPM, fill = condition)) +
     strip.text = element_text(face = "bold")
   )
 
-pdf(paste0(root_dir, "/07_plots/tpms_shared_genes_p8_p15.pdf"), width = 20, height = 6)
+# Save the plot as a PDF
+cairo_pdf(paste0(root_dir, "/07_plots/tpms_shared_genes_p8_p15.pdf"), width = 20, height = 6)
 print(p)
 dev.off()
