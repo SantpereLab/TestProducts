@@ -18,15 +18,15 @@ mkdir -p "$output_dir"
 
 # Sample list
 samples=(
-    "RPE-DMSO-1_S1"
-    "RPE-DMSO-2_S2"
-    "RPE-DMSO-3_S3"
-    "RPE-p8-1_S4"
-    "RPE-p8-2_S5"
-    "RPE-p8-3_S6"
-    "RPE-p15-1_S7"
-    "RPE-p15-2_S8"
-    "RPE-p15-3_S9"
+    "RPE_DMSO_1_S1"
+    "RPE_DMSO_2_S2"
+    "RPE_DMSO_3_S3"
+    "RPE_p8_1_S4"
+    "RPE_p8_2_S5"
+    "RPE_p8_3_S6"
+    "RPE_p15_1_S7"
+    "RPE_p15_2_S8"
+    "RPE_p15_3_S9"
 )
 # Loop through each sample and merge files
 for sample in "${samples[@]}"; do
