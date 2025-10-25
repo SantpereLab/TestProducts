@@ -13,9 +13,9 @@ The `Analysis` folder contains the R scripts and code used to perform the differ
 The analysis workflow includes the following steps:
 1.  **Quality Control (QC):** Initial quality assessment of the raw FASTQ files.
 2.  **Read Alignment:** Alignment of reads to the human reference genome (GRCh38/hg38) using STAR.
-3.  **Quantification:** Gene-level quantification of first-strand paired-end fragments was performed using featureCounts.
-4.  **Differential Expression:** Analysis was conducted using DESeq2 in R to identify significantly up- and down-regulated genes.
-5.  **Gene Ontology (GO) Enrichment Analysis:** Over-representation analysis was performed using ClusterProfiler to identify enriched biological processes and molecular functions.
+3.  **Quantification:** Gene-level quantification of first-strand paired-end fragments performed using featureCounts.
+4.  **Differential Expression:** Analysis conducted using DESeq2 in R to identify significantly up- and down-regulated genes.
+5.  **Gene Ontology (GO) Enrichment Analysis:** Over-representation analysis performed using ClusterProfiler to identify enriched biological processes and molecular functions.
 6.  **Figure Generation:** The code to generate the volcano plots and GO analysis figures presented in the manuscript is also included.
 
 ---
